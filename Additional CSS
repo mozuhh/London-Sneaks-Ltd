@@ -1,0 +1,739 @@
+/* Sale and Product Styling */
+.single-product .woocommerce-product-gallery {
+    position: relative !important;
+}
+.ast-on-card-button[data-notification="default"],
+.ast-on-card-button.ast-on-sale-card {
+    display: none !important;
+}
+/* ADD THIS TO THE VERY TOP OF YOUR CSS */
+:root {
+    --popup-title-size: 24px;
+    --popup-title-color: #666;
+    --popup-subtitle-size: 48px;
+    --popup-subtitle-color: #000;
+}
+
+/* REPLACE YOUR STEP 1 STYLING WITH THIS */
+.popup-step-1 .popup-title,
+#step1 .popup-title,
+#step1.popup-step-1 .popup-title {
+    font-size: var(--popup-title-size) !important;
+    font-weight: 600 !important;
+    margin: 0 0 15px 0 !important;
+    color: var(--popup-title-color) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    display: block !important;
+}
+
+.popup-step-1 .popup-subtitle,
+#step1 .popup-subtitle,
+#step1.popup-step-1 .popup-subtitle {
+    font-size: var(--popup-subtitle-size) !important;
+    font-weight: 900 !important;
+    margin: 0 0 40px 0 !important;
+    color: var(--popup-subtitle-color) !important;
+    line-height: 1.1 !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    word-spacing: 0.2em !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    display: block !important;
+}
+/* Sale Badge Styling */
+.single-product span.onsale,
+.woocommerce ul.products li.product span.onsale {
+    all: unset !important;
+    position: absolute !important;
+    top: 10px !important;
+    left: 10px !important;
+    z-index: 999 !important;
+    display: inline-block !important;
+    padding: 6px 10px !important;
+    background-color: #e60023 !important;
+    color: #ffffff !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    font-size: 12px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    line-height: 1 !important;
+}
+/* Out of Stock Handling */
+.woocommerce span.stock.out-of-stock,
+.woocommerce p.stock.out-of-stock,
+.ast-woocommerce-loop-product__stock-status,
+[class*="stock"][class*="out-of-stock"] {
+    display: none !important;
+}
+/* Sold Out Badge */
+.single-product .product.outofstock .summary.entry-summary::after {
+    content: "SOLD OUT" !important;
+    display: block !important;
+    text-align: center !important;
+    margin: 20px 0 !important;
+    padding: 12px 20px !important;
+    background-color: black !important;
+    color: #ffffff !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    border-radius: 2px !important;
+    line-height: 1 !important;
+}
+/* Footer Title Styling */
+.footer-widget-area[data-section="section-footer-menu-1"] .widget-title,
+.footer-primary-footer-list h2,
+#menu-footer h2,
+.footer h2,
+footer h2,
+.footer-widget h2,
+.footer .widget-title,
+#colophon .widget-title,
+.site-footer .widget-title,
+h2.widget-title,
+.elementor-widget-wrap .widget-title {
+    font-weight: 700 !important;
+}
+/* Hide all floating cart elements */
+.xoo-wsc-basket,
+.ast-site-header-cart,
+.ast-cart-menu-wrap {
+    display: none !important;
+}
+/* Style the header cart */
+.header-cart-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 10px !important;
+}
+.header-cart-wrapper .xoo-wsc-cart-trigger {
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+}
+.header-cart-wrapper .xoo-wsc-icon-basket1:before {
+    font-size: 20px !important;
+}
+
+/* ===== POPUP STYLES START ===== */
+/* Corner Triangle Button - WITH DROP SHADOW */
+.corner-popup-trigger {
+   position: fixed;
+   bottom: -1px;
+   left: -1px;
+   width: 0;
+   height: 0;
+   border-style: solid;
+   border-width: 100px 0 0 100px;
+   border-color: transparent transparent transparent #ff4444;
+   cursor: pointer;
+   z-index: 1000;
+   opacity: 0;
+   transform: translateY(20px);
+   transition: all 0.6s ease;
+   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.corner-popup-trigger.show {
+   opacity: 1;
+   transform: translateY(0);
+}
+
+.corner-popup-trigger.hide {
+   opacity: 0;
+   transform: translateY(20px);
+}
+
+.corner-popup-trigger.completed {
+   display: none !important;
+}
+
+/* Text on the triangle */
+.corner-popup-trigger::after {
+   content: "GET 10%\AOFF";
+   position: absolute;
+   top: -46px;
+   left: -107px;
+   color: white;
+   font-weight: 700;
+   font-size: 16px;
+   transform: rotate(45deg);
+   white-space: pre;
+   pointer-events: none;
+   width: 80px;
+   text-align: center;
+   line-height: 1.2;
+}
+
+/* Popup Overlay */
+.popup-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.5);
+   z-index: 10000;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   opacity: 0;
+   visibility: hidden;
+   transition: all 0.3s ease;
+}
+
+.popup-overlay.show {
+   opacity: 1;
+   visibility: visible;
+}
+
+/* Popup Container - FIXED HEIGHT */
+.popup-container {
+   background: white;
+   border-radius: 0;
+   width: 90%;
+   max-width: 800px;
+   height: 600px;
+   position: relative;
+   transform: scale(0.8) translateY(20px);
+   transition: all 0.3s ease;
+   overflow: hidden;
+   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.popup-overlay.show .popup-container {
+   transform: scale(1) translateY(0);
+}
+
+/* Close Button */
+.popup-close {
+   position: absolute;
+   top: 15px;
+   right: 15px;
+   background: none;
+   border: none;
+   font-size: 24px;
+   cursor: pointer;
+   color: #666;
+   z-index: 10001;
+   width: 30px;
+   height: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50%;
+   transition: all 0.2s ease;
+}
+
+.popup-close:hover {
+   background: rgba(0, 0, 0, 0.1);
+   color: #333;
+}
+
+/* Popup Content - FIXED HEIGHT */
+.popup-content {
+   display: flex;
+   height: 600px;
+   width: 100%;
+}
+
+.popup-image {
+   flex: 1;
+   background-size: cover;
+   background-position: center;
+   height: 600px;
+}
+
+/* Step Images */
+.popup-step-1 .popup-image {
+   background-image: url('https://londonsneaksltd.co.uk/wp-content/uploads/2025/05/get-10-off-popup-1.jpg');
+}
+
+.popup-step-2 .popup-image {
+   background-image: url('https://londonsneaksltd.co.uk/wp-content/uploads/2025/05/nike-air-jordan-1-og-high-hyper-royal-25-scaled.webp');
+}
+
+.popup-step-3 .popup-image {
+   background-image: url('https://londonsneaksltd.co.uk/wp-content/uploads/2025/05/IMG_5495.jpg');
+}
+
+.popup-form {
+   flex: 1;
+   padding: 40px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background: white;
+   text-align: center;
+}
+
+/* Hide steps by default */
+.popup-step {
+   display: none;
+}
+
+.popup-step.active {
+   display: flex;
+}
+
+/* Custom Title and Subtitle */
+.custom-title {
+   font-size: 24px !important;
+   font-weight: 600 !important;
+   margin: 0 0 15px 0 !important;
+   color: #666 !important;
+   text-transform: uppercase !important;
+   letter-spacing: 2px !important;
+   line-height: 1.2 !important;
+   text-align: center !important;
+   width: 100% !important;
+}
+
+.custom-subtitle {
+   font-size: 48px !important;
+   font-weight: 900 !important;
+   margin: 0 0 40px 0 !important;
+   color: #000 !important;
+   line-height: 1.1 !important;
+   text-transform: uppercase !important;
+   text-align: center !important;
+   width: 100% !important;
+}
+
+/* Step 2 & 3 Titles */
+.popup-step-2 .popup-title {
+   font-size: 36px !important;
+   font-weight: 900 !important;
+   margin-bottom: 47px !important;
+   color: #000 !important;
+   text-transform: uppercase !important;
+   letter-spacing: 1px !important;
+   line-height: 1.1 !important;
+   text-align: center !important;
+}
+
+.popup-step-2 .popup-subtitle {
+   font-size: 14px !important;
+   font-weight: 600 !important;
+   margin-bottom: 30px !important;
+   color: #666 !important;
+   text-transform: uppercase !important;
+   letter-spacing: 1px !important;
+   line-height: 1.2 !important;
+   text-align: center !important;
+}
+
+.popup-step-3 .popup-title {
+   font-size: 16px !important;
+   font-weight: 900 !important;
+   margin-bottom: 40px !important;
+   color: #000 !important;
+   text-transform: uppercase !important;
+   letter-spacing: 1px !important;
+   line-height: 1.1 !important;
+   text-align: center !important;
+}
+
+.popup-step-3 .popup-subtitle {
+   font-size: 18px !important;
+   font-weight: 400 !important;
+   margin-bottom: 30px !important;
+   color: #666 !important;
+   text-transform: none !important;
+   letter-spacing: 0 !important;
+   line-height: 1.4 !important;
+   text-align: center !important;
+}
+
+/* Form Elements */
+.form-group {
+   margin-bottom: 20px;
+   width: 100%;
+   max-width: 350px;
+}
+
+.form-input {
+   width: 100%;
+   padding: 15px 20px;
+   border: 2px solid #ddd;
+   border-radius: 0;
+   font-size: 16px;
+   transition: border-color 0.3s ease;
+   box-sizing: border-box;
+   background: #f8f8f8;
+}
+
+.form-input:focus {
+   outline: none;
+   border-color: #333;
+   background: white;
+}
+
+.phone-input-container {
+   display: flex;
+   gap: 10px;
+   margin-bottom: 15px;
+}
+
+.country-select {
+   flex: 0 0 120px;
+   padding: 15px 10px;
+   border: 2px solid #ddd;
+   border-radius: 0;
+   font-size: 14px;
+   background: #f8f8f8;
+   cursor: pointer;
+   box-sizing: border-box;
+}
+
+.phone-input {
+   flex: 1;
+   padding: 15px 20px;
+   border: 2px solid #ddd;
+   border-radius: 0;
+   font-size: 16px;
+   transition: border-color 0.3s ease;
+   box-sizing: border-box;
+   background: #f8f8f8;
+}
+
+.phone-input:focus,
+.country-select:focus {
+   outline: none;
+   border-color: #333;
+   background: white;
+}
+
+.form-select {
+   width: 100%;
+   padding: 15px 20px;
+   border: 2px solid #ddd;
+   border-radius: 0;
+   font-size: 16px;
+   background: #f8f8f8;
+   cursor: pointer;
+   box-sizing: border-box;
+}
+
+.form-select:focus {
+   outline: none;
+   border-color: #333;
+   background-color: white;
+}
+
+.form-select option {
+   padding: 10px;
+   background: white;
+   color: #333;
+}
+
+.unlock-btn {
+   width: 100%;
+   max-width: 350px;
+   background: #000;
+   color: white;
+   padding: 18px;
+   border: none;
+   border-radius: 0;
+   font-size: 16px;
+   font-weight: bold;
+   cursor: pointer;
+   margin: 15px 0 20px 0;
+   transition: background 0.3s ease;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+}
+
+.unlock-btn:hover {
+   background: #333;
+}
+
+.no-thanks {
+   text-align: center;
+   color: #666;
+   text-decoration: underline;
+   cursor: pointer;
+   font-size: 14px;
+   margin-top: 10px;
+}
+
+.no-thanks:hover {
+   color: #000;
+}
+
+.sms-disclaimer {
+   font-size: 11px;
+   color: #666;
+   line-height: 1.3;
+   text-align: left;
+   margin-top: 10px;
+   text-transform: none;
+   max-width: 350px;
+}
+
+.sms-disclaimer a {
+   color: #666;
+   text-decoration: underline;
+}
+
+.form-label {
+   display: block;
+   font-size: 14px;
+   font-weight: 600;
+   color: #666;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   margin-bottom: 8px;
+   text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+   .popup-container {
+       width: 95%;
+       margin: 20px;
+       height: auto;
+       min-height: 600px;
+   }
+   
+   .popup-content {
+       flex-direction: column;
+       height: auto;
+       min-height: 600px;
+   }
+   
+   .popup-image {
+       min-height: 200px;
+       flex: none;
+       height: 200px;
+   }
+   
+   .popup-form {
+       padding: 30px 20px;
+       flex: none;
+   }
+   
+   .custom-title {
+       font-size: 20px !important;
+   }
+   
+   .custom-subtitle {
+       font-size: 36px !important;
+   }
+}
+
+/* Smooth transitions for popup steps */
+.popup-step {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Ensure smooth step transitions */
+.popup-step.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Initial state for better animation */
+.popup-step:not(.active) {
+    opacity: 0;
+    transform: translateX(20px);
+}
+@font-face {
+    font-family: 'BRHendrix';
+    src: url('/wp-content/themes/astra-child/fonts/BRHendrix-Regular-BF6556d1b5096f9.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BRHendrix';
+    src: url('/wp-content/themes/astra-child/fonts/BRHendrix-Medium-BF6556d1b4e12b2.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BRHendrix';
+    src: url('/wp-content/themes/astra-child/fonts/BRHendrix-Bold-BF6556d1b5459d3.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ===== POPUP STYLES END ===== */
+
+/* ===== SITE FONTS ===== */
+
+body,
+.ast-site-identity,
+.ast-single-post .entry-title,
+h1, h2, h3, h4, h5, h6,
+.woocommerce-loop-product__title,
+.woocommerce ul.products li.product .price {
+  font-family: 'BrHendrix', sans-serif !important;
+}
+.main-header-menu a,
+.ast-header-break-point .main-header-bar-navigation .menu-item a,
+.ast-header-custom-item {
+  font-family: 'BrHendrix', sans-serif !important;
+}
+
+/* ===== SITE FONTS END ===== */
+
+/* ===== ELEMENTOR BADGES ===== */
+
+/* Force consistent badge styling on homepage */
+.home .unified-badge,
+.home .onsale {
+    min-width: 45px !important;
+    min-height: 24px !important;
+    white-space: nowrap !important;
+    box-sizing: border-box !important;
+}
+
+/* Override any homepage-specific styling */
+.home li.product .onsale,
+.home .elementor-widget-wc-products .onsale {
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+}
+
+.unified-badge,
+.onsale {
+    font-family: 'BRHendrix', Arial, sans-serif !important;
+}
+.corner-popup-trigger .mobile-close {
+    display: none;
+    position: absolute;
+    top: -100px;
+    left: -92px;
+    width: 24px;
+    height: 24px;
+    background: #000000;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    line-height: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.corner-popup-trigger .mobile-close:hover {
+    background: #333333;
+    transform: scale(1.1);
+}
+
+/* Show X button only on mobile and tablet */
+@media (max-width: 1024px) {
+    .corner-popup-trigger .mobile-close {
+        display: block;
+    }
+}
+
+/* Hide the X when popup is completed */
+.corner-popup-trigger.completed .mobile-close {
+    display: none !important;
+}
+
+/* Hide the X when corner trigger is hidden */
+.corner-popup-trigger.hide .mobile-close {
+    display: none;
+}
+/* Add to your theme's style.css or functions.php */
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+}
+
+* {
+    box-sizing: border-box !important;
+}
+
+/* Fix specific elements that might cause overflow */
+.elementor-section,
+.elementor-container,
+.elementor-row {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+/* Fix slides specifically */
+.swiper-container,
+.slider-container,
+.carousel {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+/* Ensure no elements extend beyond viewport */
+@media (max-width: 768px) {
+    .elementor-element {
+        max-width: 100% !important;
+    }
+    
+    /* Common culprits */
+    img, video, iframe {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
+@media (max-width: 767px) {
+    /* Target the specific London Sneaks section */
+    .site-footer-primary-section-3 .ast-builder-html-element,
+    .site-footer-primary-section-3 .ast-builder-html-element p {
+        text-align: center !important;
+        display: block !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+    }
+    
+    /* Override the inline style specifically */
+    .site-footer-primary-section-3 p[style*="text-align: left"] {
+        text-align: center !important;
+    }
+    
+    /* All other footer elements */
+    footer *,
+    .site-footer * {
+        text-align: center !important;
+    }
+    
+    /* Font sizes */
+    footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
+        font-size: 18px !important;
+    }
+    
+    footer a {
+        font-size: 15px !important;
+    }
+    
+    footer p {
+        font-size: 15px !important;
+    }
+    
+    .site-footer-primary-section-3 * {
+        font-size: 13px !important;
+    }
+    
+    footer .elementor-element:last-child * {
+        font-size: 11px !important;
+    }
+}
